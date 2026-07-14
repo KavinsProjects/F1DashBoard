@@ -1,6 +1,6 @@
-# PITWALL - F1 Dashboard
+# F1 Dashboard
 
-PITWALL is React-based Formal one 1 DashBoard the information about the current F1 season including the constructor standings, race schedule.
+ This is React-based Formal one 1 DashBoard the information about the current F1 season including the constructor standings, race schedule.
 
 ## Current Release : Version 1.0
 - Current Driver Standings
