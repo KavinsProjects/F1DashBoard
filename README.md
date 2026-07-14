@@ -15,8 +15,7 @@ I Used Jolpica F1 API.
 
 - Current Drivers [click](https://api.jolpi.ca/ergast/f1/current)
 
-## Live Demo
-[click 🏎️](https://kavinsprojects.github.io/PITWALL/)
+
 
 
 
