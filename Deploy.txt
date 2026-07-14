@@ -1,0 +1,16 @@
+
+
+base : "/your repo-name/",
+Add this in your vite.config.js
+
+//package.json
+"homepage": "https://KavinsProjects.github.io/PITWALL"
+
+under scripts 
+"predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+
+commit the changes 
+
+run 
+npm run deploy
