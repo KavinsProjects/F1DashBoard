@@ -1,5 +1,124 @@
-body{
-    background: #181717;
-    font-family: sans-serif;
-    
+:root {
+  --f1-red: #E10600;
+  --f1-red-hover: #B50500;
+  --f1-red-glow: rgba(225, 6, 0, 0.2);
+  --f1-dark-bg: #0F0F14;
+  --f1-card-bg: #15151F;
+  --f1-card-hover: #1C1C28;
+  --f1-border: #252532;
+  --f1-border-active: #3E3E52;
+  --f1-text-primary: #FFFFFF;
+  --f1-text-secondary: #94A3B8;
+  --f1-text-muted: #64748B;
+  
+  /* Racing team colors */
+  --team-redbull: #3671C6;
+  --team-ferrari: #F91536;
+  --team-mercedes: #6CD3BF;
+  --team-mclaren: #F58020;
+  --team-astonmartin: #358C75;
+  --team-alpine: #2293D1;
+  --team-haas: #B6BABD;
+  --team-williams: #37BEDD;
+  --team-rb: #6692FF;
+  --team-sauber: #52E252;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--f1-dark-bg);
+  color: var(--f1-text-primary);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--f1-dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--f1-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--f1-red);
+}
+
+/* Minimalist F1 Card Styling */
+.f1-card {
+  background: var(--f1-card-bg);
+  border: 1px solid var(--f1-border);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.f1-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--f1-border-active);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.f1-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--f1-border);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--f1-text-secondary);
+}
+
+.f1-title-accent {
+  color: var(--f1-red);
+}
+
+/* Custom Table/Row styles */
+.f1-table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--f1-border);
+  transition: background 0.15s ease;
+  position: relative;
+}
+
+.f1-table-row:hover {
+  background: var(--f1-card-hover);
+}
+
+/* Pulse animation for Live countdown */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.f1-pulse {
+  animation: pulse 2s infinite ease-in-out;
 }

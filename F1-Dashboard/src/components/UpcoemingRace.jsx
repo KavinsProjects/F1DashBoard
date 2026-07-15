@@ -1,124 +1,202 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
-const UpcomingRace = () => {
-  const [data, setData] = useState(null);
+const UpcomingRace = ({ race, loading }) => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    completed: false,
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data: response } = await axios.get(
-          "https://api.jolpi.ca/ergast/f1/current/next.json"
-        );
+    if (!race) return;
 
-        setData(response);
-        console.log(response);
-      } catch (error) {
-        console.error("There was an error fetching the API:", error);
+    const calculateTimeLeft = () => {
+      const raceDateTimeString = race.time
+        ? race.time.includes("Z")
+          ? `${race.date}T${race.time}`
+          : `${race.date}T${race.time}Z`
+        : `${race.date}T00:00:00Z`;
+
+      const raceDateTime = new Date(raceDateTimeString);
+      const now = new Date();
+      const difference = raceDateTime.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, completed: true });
+        return;
       }
+
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        completed: false,
+      });
     };
 
-    fetchData();
-  }, []);
+    calculateTimeLeft();
+    const interval = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(interval);
+  }, [race]);
+
+  if (loading || !race) {
+    return (
+      <div className="f1-card" style={{ width: "100%" }}>
+        <h2 className="f1-title">
+          <span className="f1-title-accent">🏎️</span> NEXT GRAND PRIX
+        </h2>
+        <div style={{ padding: "40px 20px", textAlign: "center", color: "var(--f1-text-secondary)" }}>
+          <div className="f1-pulse" style={{ fontSize: "13px", fontWeight: "500" }}>
+            ACQUIRING TELEMETRY...
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div
-  style={{
-    
-    minHeight: "200vh",
-    padding: "20px",
-    color: "white",
-  }}
->
-  <h2
-    style={{
-      color: "#E10600",
-      marginBottom: "20px",
-      textTransform: "uppercase",
-    }}
-  >
-    🏎️Upcoming Races
-  </h2>
+    <div className="f1-card" style={{ width: "100%", padding: "20px" }}>
+      <h2 className="f1-title">
+        <span className="f1-title-accent">🏎️</span> NEXT GRAND PRIX
+      </h2>
 
-  <div
-    style={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: "20px",
-    }}
-  >
-    {data?.MRData?.RaceTable?.Races?.map((race) => (
-      <div
-        key={race.round}
-        style={{
-          width: "260px",
-          height: "260px",
-          background: "#1A1A1A",
-          border: "2px solid #E10600",
-          borderRadius: "10px",
-          padding: "15px",
-          boxSizing: "border-box",
-          boxShadow: "0 0 10px rgba(225,6,0,0.4)",
-          overflow: "auto",
-        }}
-      >
-        <h3
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
+        {/* Race Header details */}
+        <div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "8px" }}>
+            <span
+              style={{
+                background: "rgba(225, 6, 0, 0.1)",
+                color: "var(--f1-red)",
+                border: "1px solid var(--f1-red)",
+                padding: "2px 8px",
+                borderRadius: "4px",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+              }}
+            >
+              ROUND {race.round}
+            </span>
+            <span style={{ fontSize: "11px", color: "var(--f1-text-secondary)", fontFamily: "monospace" }}>
+              {race.date}
+            </span>
+          </div>
+
+          <h3
+            style={{
+              color: "white",
+              fontSize: "18px",
+              fontWeight: "700",
+              marginTop: "12px",
+              lineHeight: "1.3",
+            }}
+          >
+            {race.raceName.toUpperCase()}
+          </h3>
+
+          <p
+            style={{
+              color: "var(--f1-text-secondary)",
+              fontSize: "12px",
+              marginTop: "6px",
+              lineHeight: "1.4",
+            }}
+          >
+            📍 {race.Circuit?.circuitName}
+            <br />
+            <span style={{ color: "var(--f1-text-muted)", fontSize: "11px" }}>
+              {race.Circuit?.Location?.locality}, {race.Circuit?.Location?.country}
+            </span>
+          </p>
+
+          {race.Circuit?.circuitId === "spa" && (
+            <p
+              style={{
+                color: "var(--f1-text-secondary)",
+                fontSize: "11px",
+                lineHeight: "1.6",
+                marginTop: "12px",
+                padding: "10px",
+                background: "rgba(255, 255, 255, 0.02)",
+                borderRadius: "4px",
+                borderLeft: "3px solid var(--f1-red)",
+              }}
+            >
+              Circuit de Spa-Francorchamps is one of the most iconic and challenging Formula 1 circuits in the world, located in the Ardennes forest of Belgium. Opened in 1921, the track is 7.004 km long and is famous for its fast corners and unpredictable weather. Its legendary Eau Rouge–Raidillon section is considered one of the greatest sequences in motorsport. Drivers complete 44 laps during the Belgian Grand Prix, covering a total race distance of 308.052 km. Spa's combination of long straights, sweeping corners, and elevation changes makes it a favorite among both drivers and fans.
+            </p>
+          )}
+        </div>
+
+        {/* Small Minimalist Countdown */}
+        <div
           style={{
-            color: "#E10600",
-            margin: "0 0 10px",
-            fontSize: "18px",
+            marginTop: "20px",
+            padding: "12px",
+            background: "#0A0A0F",
+            border: "1px solid var(--f1-border)",
+            borderRadius: "6px",
           }}
         >
-          {race.raceName}
-        </h3>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span
+              style={{
+                fontSize: "10px",
+                fontWeight: "700",
+                color: "var(--f1-text-muted)",
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+              }}
+            >
+              Race Countdown
+            </span>
+            <span
+              style={{
+                width: "6px",
+                height: "6px",
+                background: timeLeft.completed ? "var(--f1-text-muted)" : "var(--f1-red)",
+                borderRadius: "50%",
+                display: "inline-block",
+              }}
+              className={timeLeft.completed ? "" : "f1-pulse"}
+            ></span>
+          </div>
 
-        <p style={{ margin: "5px 0", fontSize: "13px" }}>
-          <b>Circuit:</b> {race.Circuit.circuitName}
-        </p>
-
-        <p style={{ margin: "5px 0", fontSize: "13px" }}>
-          <b>🏁 Date:</b> {race.date}
-        </p>
-
-        <p style={{ margin: "5px 0", fontSize: "13px" }}>
-          <b>⏰ Time:</b> {race.time}
-        </p>
-
-        <hr
-          style={{
-            border: "none",
-            borderTop: "1px solid #E10600",
-            margin: "10px 0",
-          }}
-        />
-
-        <p style={{ margin: "4px 0", fontSize: "12px" }}>
-          <b>FP1:</b> {race.FirstPractice?.time}
-        </p>
-
-        <p style={{ margin: "4px 0", fontSize: "12px" }}>
-          <b>FP2:</b> {race.SecondPractice?.time}
-        </p>
-
-        <p style={{ margin: "4px 0", fontSize: "12px" }}>
-          <b>FP3:</b> {race.ThirdPractice?.time}
-        </p>
-
-        <p style={{ margin: "4px 0", fontSize: "12px", color: "#E10600" }}>
-          <b>Qualifying</b>
-        </p>
-
-        <p style={{ margin: "2px 0", fontSize: "12px" }}>
-          {race.Qualifying?.date}
-        </p>
-
-        <p style={{ margin: "2px 0", fontSize: "12px" }}>
-          {race.Qualifying?.time}
-        </p>
+          {!timeLeft.completed ? (
+            <div
+              style={{
+                fontFamily: "monospace",
+                fontSize: "15px",
+                fontWeight: "700",
+                color: "white",
+                marginTop: "4px",
+                letterSpacing: "0.5px",
+              }}
+            >
+              {timeLeft.days}d {String(timeLeft.hours).padStart(2, "0")}h{" "}
+              {String(timeLeft.minutes).padStart(2, "0")}m {String(timeLeft.seconds).padStart(2, "0")}s
+            </div>
+          ) : (
+            <div
+              style={{
+                fontSize: "12px",
+                fontWeight: "700",
+                color: "var(--f1-red)",
+                marginTop: "4px",
+                textTransform: "uppercase",
+              }}
+            >
+              ⚡ LIVE ACTION UNDERWAY
+            </div>
+          )}
+        </div>
       </div>
-    ))}
-  </div>
-</div>  );
+    </div>
+  );
 };
 
 export default UpcomingRace;
