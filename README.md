@@ -2,6 +2,8 @@
 
  This is React-based Formal one 1 DashBoard the information about the current F1 season including the constructor standings, race schedule.
 
+ ### Click Here(https://kavinsprojects.github.io/F1DashBoard/)
+
 ## Current Release : Version 1.0
 - Current Driver Standings
 - Constructor Standings
