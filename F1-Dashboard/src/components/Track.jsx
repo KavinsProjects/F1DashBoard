@@ -17,7 +17,7 @@ const Track = ({ race, loading }) => {
     if (!hasError) {
       setHasError(true);
       // Fallback to Spa if specific track doesn't exist in the API repo
-      setImgUrl(`https://kavinsprojects.github.io/F1_Track_API/track-img/spa.png`);
+      setImgUrl(`https://kavinsprojects.github.io/F1_Track_API/track-img/Hungarain_Circuit.png`);
     }
   };
 
