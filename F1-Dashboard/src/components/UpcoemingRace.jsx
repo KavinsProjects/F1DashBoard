@@ -111,16 +111,10 @@ const UpcomingRace = ({ race, loading }) => {
             <br />
             <span style={{ color: "var(--f1-text-muted)", fontSize: "11px" }}>
               {race.Circuit?.Location?.locality}, {race.Circuit?.Location?.country}
-              <p>he Hungarian Grand Prix is one of the most historic races in Formula 1, first held in 1986,
-                making it the first F1 race staged behind the Iron Curtain. It has been held every year at the 
-                Hungaroring, a 4.381 km circuit located near Budapest, Hungary. The track is known for its 
-                tight, twisty layout, which makes overtaking difficult and rewards precision and strategy. Over the years,
-                many legendary drivers, including Lewis Hamilton and Michael Schumacher, have enjoyed success at the Hungaroring.
-                The race is a fan favourite because of its exciting atmosphere and challenging circuit. In the 2025 Hungarian
-                Grand Prix, Lando Norris of McLaren claimed victory after a strong performance, giving McLaren its 200th Formula 1 win.
-                The race was held at the Hungaroring on 3 August 2025, with Oscar Piastri finishing second and George Russell taking third place
-              </p>
             </span>
+            <P>
+              The Hungarian Grand Prix is one of the most historic races in Formula 1, first held in 1986, making it the first F1 race staged behind the Iron Curtain. It has been held every year at the Hungaroring, a 4.381 km circuit located near Budapest, Hungary. The track is known for its tight, twisty layout, which makes overtaking difficult and rewards precision and strategy. Over the years, many legendary drivers, including Lewis Hamilton and Michael Schumacher, have enjoyed success at the Hungaroring. The race is a fan favourite because of its exciting atmosphere and challenging circuit. In the 2025 Hungarian Grand Prix, Lando Norris of McLaren claimed victory after a strong performance, giving McLaren its 200th Formula 1 win. The race was held at the Hungaroring on 3 August 2025, with Oscar Piastri finishing second and George Russell taking third place.
+            </P>
           </p>
 
           {race.Circuit?.circuitId === "spa" && (
