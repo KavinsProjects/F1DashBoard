@@ -112,8 +112,10 @@ const UpcomingRace = ({ race, loading }) => {
             <span style={{ color: "var(--f1-text-muted)", fontSize: "11px" }}>
               {race.Circuit?.Location?.locality}, {race.Circuit?.Location?.country}
               <p>
-                The Hungarian Grand Prix, first held in 1986, was the first Formula 1 race staged behind the Iron Curtain. It has been held every year at the Hungaroring near Budapest, a 4.381 km circuit famous for its tight, twisty layout that rewards precision and strategy. The circuit is often called "Monaco without the walls" because of its narrow corners and limited overtaking opportunities, making qualifying and race strategy crucial. Its challenging layout has produced many memorable races and remains one of the most iconic venues on the Formula 1 calendar. In the <strong>2025 Hungarian Grand Prix, Lando Norris</strong> secured victory for McLaren, marking the team's 200th Formula 1 win. Oscar Piastri finished second, with George Russell completing the podium in third.
+                The **Dutch Grand Prix**, first held in **1952**, is one of Formula 1's most historic races. It is held at **Circuit Zandvoort**, a **4.259 km** circuit located on the North Sea coast in the Netherlands. Famous for its fast, flowing corners, dramatic elevation changes, and steeply banked turns, Zandvoort is a true driver's circuit that demands precision, commitment, and confidence. The passionate sea of orange-clad fans creates one of the most electrifying atmospheres on the Formula 1 calendar, making the Dutch Grand Prix a standout event each season. In the <strong>2025 Dutch Grand Prix, Oscar Piastri</strong> secured victory for McLaren after converting pole position into a dominant win. Max Verstappen finished second on home soil, while Isack Hadjar claimed his maiden Formula 1 podium by finishing third.
+
               </p>
+              
             </span>
           </p>
 
