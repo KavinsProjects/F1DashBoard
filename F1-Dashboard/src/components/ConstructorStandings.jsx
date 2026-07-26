@@ -85,7 +85,7 @@ const ConstructorStandings = () => {
       {/* Standings List */}
       <div
         style={{
-          maxHeight: "350px",
+          maxHeight: "420px",
           overflowY: "auto",
           marginTop: "5px",
         }}

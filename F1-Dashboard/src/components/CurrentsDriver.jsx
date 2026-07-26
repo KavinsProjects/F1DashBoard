@@ -85,7 +85,7 @@ const CurrentDrivers = () => {
       {/* Standings List Container */}
       <div
         style={{
-          maxHeight: "350px",
+          maxHeight: "420px",
           overflowY: "auto",
           marginTop: "5px",
         }}

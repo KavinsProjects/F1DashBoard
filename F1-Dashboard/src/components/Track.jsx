@@ -30,7 +30,7 @@ const Track = ({ race, loading }) => {
         </h2>
         <div
           style={{
-            height: "220px",
+            height: "420px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -60,7 +60,7 @@ const Track = ({ race, loading }) => {
           justifyContent: "center",
           alignItems: "center",
           marginBottom: "15px",
-          height: "220px",
+          height: "420px",
         }}
       >
         <img

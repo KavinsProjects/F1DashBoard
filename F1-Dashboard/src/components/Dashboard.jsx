@@ -5,6 +5,8 @@ import UpcomingRace from "./UpcoemingRace";
 import WeekendSchedule from "./WeekendSchedule";
 import ConstructorStandings from "./ConstructorStandings";
 import CurrentDrivers from "./CurrentsDriver";
+import Winner from "./Winner";
+import LastWeekend from "./LastWeekend";
 
 const Dashboard = () => {
   const [nextRace, setNextRace] = useState(null);
@@ -31,7 +33,7 @@ const Dashboard = () => {
     <div
       style={{
         padding: "25px",
-        maxWidth: "1400px",
+        maxWidth: "1600px",
         margin: "0 auto",
         minHeight: "100vh",
       }}
@@ -49,19 +51,19 @@ const Dashboard = () => {
       >
         <h1
           style={{
-            fontSize: "24px",
+            fontSize: "28px",
             fontWeight: 800,
             letterSpacing: "1.5px",
-            color: "#FFFFFF",
+            color: "#E10600",
             textTransform: "uppercase",
             textAlign: "center",
           }}
         >
-          <span style={{ color: "#E10600" }}> PIT WALL</span>
+          PIT WALL
         </h1>
       </header>
 
-      {/* Top Row: Next Grand Prix, Weekend Schedule, Circuit Layout */}
+      {/* Top Row: Latest Results, Next Grand Prix, Weekend Schedule, Circuit Layout */}
       <div
         style={{
           display: "flex",
@@ -70,13 +72,19 @@ const Dashboard = () => {
           marginBottom: "25px",
         }}
       >
-        <div style={{ flex: "1 1 300px", display: "flex" }}>
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
+          <Winner />
+        </div>
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
           <UpcomingRace race={nextRace} loading={loading} />
         </div>
-        <div style={{ flex: "1 1 300px", display: "flex" }}>
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
           <WeekendSchedule race={nextRace} loading={loading} />
         </div>
-        <div style={{ flex: "1 1 300px", display: "flex" }}>
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
+          <LastWeekend />
+        </div>
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
           <Track race={nextRace} loading={loading} />
         </div>
       </div>
@@ -89,10 +97,11 @@ const Dashboard = () => {
           gap: "25px",
         }}
       >
-        <div style={{ flex: "1 1 300px", display: "flex" }}>
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
           <CurrentDrivers />
         </div>
-        <div style={{ flex: "1 1 300px", display: "flex" }}>
+
+        <div style={{ flex: "1 1 340px", display: "flex" }}>
           <ConstructorStandings />
         </div>
       </div>
