@@ -152,7 +152,7 @@ const Dashboard = () => {
               fontWeight: "500",
             }}
           >
-            🇳🇱 Oscar Piastri celebrating victory at the Dutch Grand Prix!
+           Lando Norris celebrating victory at the Dutch Grand Prix!
           </div>
         </div>
       </div>
