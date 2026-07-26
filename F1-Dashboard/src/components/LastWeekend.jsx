@@ -4,7 +4,7 @@ const LastWeekend = () => {
   return (
     <div className="f1-card" style={{ width: "100%", padding: "20px" }}>
       <h2 className="f1-title">
-        <span className="f1-title-accent">📰</span> WHAT HAPPENED LAST WEEKEND
+        <span className="f1-title-accent">📰</span> WHAT HAPPENED Hungarian GP
       </h2>
       <div
         style={{
