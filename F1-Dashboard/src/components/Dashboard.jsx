@@ -7,6 +7,7 @@ import ConstructorStandings from "./ConstructorStandings";
 import CurrentDrivers from "./CurrentsDriver";
 import Winner from "./Winner";
 import LastWeekend from "./LastWeekend";
+import dutchWinner from "../assets/dutch_winner.png";
 
 const Dashboard = () => {
   const [nextRace, setNextRace] = useState(null);
@@ -103,6 +104,56 @@ const Dashboard = () => {
 
         <div style={{ flex: "1 1 340px", display: "flex" }}>
           <ConstructorStandings />
+        </div>
+      </div>
+
+      {/* Champion's Celebration Banner (Bottom of the Dashboard) */}
+      <div
+        style={{
+          marginTop: "25px",
+          display: "flex",
+        }}
+      >
+        <div className="f1-card" style={{ width: "100%", padding: "20px" }}>
+          <h2 className="f1-title">
+            <span className="f1-title-accent">🏆</span> CHAMPION'S CELEBRATION
+          </h2>
+          <div
+            style={{
+              background: "#0A0A0F",
+              border: "1px solid var(--f1-border)",
+              borderRadius: "6px",
+              padding: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "480px",
+              overflow: "hidden",
+            }}
+          >
+            <img
+              src={dutchWinner}
+              alt="Oscar Piastri Victory Celebration"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
+                borderRadius: "4px",
+              }}
+              className="hover-zoom"
+            />
+          </div>
+          <div
+            style={{
+              fontSize: "12px",
+              marginTop: "12px",
+              color: "var(--f1-text-secondary)",
+              textAlign: "center",
+              fontWeight: "500",
+            }}
+          >
+            🇳🇱 Oscar Piastri celebrating victory at the Dutch Grand Prix!
+          </div>
         </div>
       </div>
     </div>

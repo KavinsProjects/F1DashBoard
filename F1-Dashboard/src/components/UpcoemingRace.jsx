@@ -64,83 +64,10 @@ const UpcomingRace = ({ race, loading }) => {
       </h2>
 
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
-        {/* Race Header details */}
-        <div>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "8px" }}>
-            <span
-              style={{
-                background: "rgba(225, 6, 0, 0.1)",
-                color: "var(--f1-red)",
-                border: "1px solid var(--f1-red)",
-                padding: "2px 8px",
-                borderRadius: "4px",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-              }}
-            >
-              ROUND {race.round}
-            </span>
-            <span style={{ fontSize: "11px", color: "var(--f1-text-secondary)", fontFamily: "monospace" }}>
-              {race.date}
-            </span>
-          </div>
-
-          <h3
-            style={{
-              color: "white",
-              fontSize: "18px",
-              fontWeight: "700",
-              marginTop: "12px",
-              lineHeight: "1.3",
-            }}
-          >
-            {race.raceName.toUpperCase()}
-          </h3>
-
-          <p
-            style={{
-              color: "var(--f1-text-secondary)",
-              fontSize: "12px",
-              marginTop: "6px",
-              lineHeight: "1.4",
-            }}
-          >
-            📍 {race.Circuit?.circuitName}
-            <br />
-            <span style={{ color: "var(--f1-text-muted)", fontSize: "11px" }}>
-              {race.Circuit?.Location?.locality}, {race.Circuit?.Location?.country}
-              <p>
-                The **Dutch Grand Prix**, first held in **1952**, is one of Formula 1's most historic races. It is held at **Circuit Zandvoort**, a **4.259 km** circuit located on the North Sea coast in the Netherlands. Famous for its fast, flowing corners, dramatic elevation changes, and steeply banked turns, Zandvoort is a true driver's circuit that demands precision, commitment, and confidence. The passionate sea of orange-clad fans creates one of the most electrifying atmospheres on the Formula 1 calendar, making the Dutch Grand Prix a standout event each season. In the <strong>2025 Dutch Grand Prix, Oscar Piastri</strong> secured victory for McLaren after converting pole position into a dominant win. Max Verstappen finished second on home soil, while Isack Hadjar claimed his maiden Formula 1 podium by finishing third.
-
-              </p>
-              
-            </span>
-          </p>
-
-          {race.Circuit?.circuitId === "spa" && (
-            <p
-              style={{
-                color: "var(--f1-text-secondary)",
-                fontSize: "11px",
-                lineHeight: "1.6",
-                marginTop: "12px",
-                padding: "10px",
-                background: "rgba(255, 255, 255, 0.02)",
-                borderRadius: "4px",
-                borderLeft: "3px solid var(--f1-red)",
-              }}
-            >
-              Circuit de Spa-Francorchamps is one of the most iconic and challenging Formula 1 circuits in the world, located in the Ardennes forest of Belgium. Opened in 1921, the track is 7.004 km long and is famous for its fast corners and unpredictable weather. Its legendary Eau Rouge–Raidillon section is considered one of the greatest sequences in motorsport. Drivers complete 44 laps during the Belgian Grand Prix, covering a total race distance of 308.052 km. Spa's combination of long straights, sweeping corners, and elevation changes makes it a favorite among both drivers and fans.
-            </p>
-          )}
-        </div>
-
-        {/* Small Minimalist Countdown */}
+        {/* Race Countdown (Timer First) */}
         <div
           style={{
-            marginTop: "20px",
+            marginBottom: "15px",
             padding: "12px",
             background: "#0A0A0F",
             border: "1px solid var(--f1-border)",
@@ -197,6 +124,93 @@ const UpcomingRace = ({ race, loading }) => {
             >
               ⚡ LIVE ACTION UNDERWAY
             </div>
+          )}
+        </div>
+
+        {/* Race Header details */}
+        <div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "8px" }}>
+            <span
+              style={{
+                background: "rgba(225, 6, 0, 0.1)",
+                color: "var(--f1-red)",
+                border: "1px solid var(--f1-red)",
+                padding: "2px 8px",
+                borderRadius: "4px",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+              }}
+            >
+              ROUND {race.round}
+            </span>
+            <span style={{ fontSize: "11px", color: "var(--f1-text-secondary)", fontFamily: "monospace" }}>
+              {race.date}
+            </span>
+          </div>
+
+          <h3
+            style={{
+              color: "white",
+              fontSize: "18px",
+              fontWeight: "700",
+              marginTop: "12px",
+              lineHeight: "1.3",
+            }}
+          >
+            {race.raceName.toUpperCase()}
+          </h3>
+
+          <p
+            style={{
+              color: "var(--f1-text-secondary)",
+              fontSize: "12px",
+              marginTop: "6px",
+              lineHeight: "1.4",
+            }}
+          >
+            📍 {race.Circuit?.circuitName}
+            <br />
+            <span style={{ color: "var(--f1-text-muted)", fontSize: "11px" }}>
+              {race.Circuit?.Location?.locality}, {race.Circuit?.Location?.country}
+            </span>
+          </p>
+
+          {race.Circuit?.circuitId === "spa" && (
+            <p
+              style={{
+                color: "var(--f1-text-secondary)",
+                fontSize: "11px",
+                lineHeight: "1.6",
+                marginTop: "12px",
+                padding: "10px",
+                background: "rgba(255, 255, 255, 0.02)",
+                borderRadius: "4px",
+                borderLeft: "3px solid var(--f1-red)",
+              }}
+            >
+              Circuit de Spa-Francorchamps is one of the most iconic and challenging Formula 1 circuits in the world, located in the Ardennes forest of Belgium. Opened in 1921, the track is 7.004 km long and is famous for its fast corners and unpredictable weather. Its legendary Eau Rouge–Raidillon section is considered one of the greatest sequences in motorsport. Drivers complete 44 laps during the Belgian Grand Prix, covering a total race distance of 308.052 km. Spa's combination of long straights, sweeping corners, and elevation changes makes it a favorite among both drivers and fans.
+            </p>
+          )}
+
+          {(race.Circuit?.circuitId === "zandvoort" || 
+            race.Circuit?.circuitName?.toLowerCase().includes("zandvoort") || 
+            race.Circuit?.circuitName?.toLowerCase().includes("dutch")) && (
+            <p
+              style={{
+                color: "var(--f1-text-secondary)",
+                fontSize: "11px",
+                lineHeight: "1.6",
+                marginTop: "12px",
+                padding: "10px",
+                background: "rgba(255, 255, 255, 0.02)",
+                borderRadius: "4px",
+                borderLeft: "3px solid var(--f1-red)",
+              }}
+            >
+              The <strong>Dutch Grand Prix</strong>, first held in <strong>1952</strong>, is one of Formula 1's most historic races. It is held at <strong>Circuit Zandvoort</strong>, a <strong>4.259 km</strong> circuit located on the North Sea coast in the Netherlands. Famous for its fast, flowing corners, dramatic elevation changes, and steeply banked turns, Zandvoort is a true driver's circuit that demands precision, commitment, and confidence. The passionate sea of orange-clad fans creates one of the most electrifying atmospheres on the Formula 1 calendar, making the Dutch Grand Prix a standout event each season. In the <strong>2025 Dutch Grand Prix, Oscar Piastri</strong> secured victory for McLaren after converting pole position into a dominant win. Max Verstappen finished second on home soil, while Isack Hadjar claimed his maiden Formula 1 podium by finishing third.
+            </p>
           )}
         </div>
       </div>
