@@ -5,14 +5,10 @@ const Winner = () => {
   return (
     <div className="f1-card" style={{ width: "100%", padding: "20px" }}>
       <h2 className="f1-title">
-        <span className="f1-title-accent">🏁</span> LATEST RACE RESULTS
+        <span className="f1-title-accent">🏁</span> ZANDVOORT WINNER
       </h2>
       <div
         style={{
-          background: "#0A0A0F",
-          border: "1px solid var(--f1-border)",
-          borderRadius: "6px",
-          padding: "10px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -22,12 +18,11 @@ const Winner = () => {
       >
         <img
           src={todayWinner}
-          alt="Hungarian Grand Prix Results"
+          alt="Zandvoort Grand Prix winner"
           style={{
-            maxWidth: "100%",
-            maxHeight: "100%",
-            objectFit: "contain",
-            borderRadius: "4px",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
           }}
           className="hover-zoom"
         />
@@ -41,7 +36,7 @@ const Winner = () => {
           fontWeight: "500",
         }}
       >
-        📊 Hungary Grand Prix podium: Norris (P1), Verstappen (P2), Antonelli (P3)
+        🏆 Zandvoort winner: Norris (P1)
       </div>
     </div>
   );
