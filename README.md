@@ -20,7 +20,7 @@ I Used Jolpica F1 API.
 
 <img width="1024" height="576" alt="simply lonely" src="https://github.com/user-attachments/assets/8fe72fb8-2250-4f33-8360-fd53f844b6a3" />
 
-
+## I came for the racing, but somewhere along the way, I fell completely in love with F1.
 
 
 
