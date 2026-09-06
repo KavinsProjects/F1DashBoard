@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Track from "./Track";
 import UpcomingRace from "./UpcoemingRace";
@@ -7,6 +7,7 @@ import ConstructorStandings from "./ConstructorStandings";
 import CurrentDrivers from "./CurrentsDriver";
 import Winner from "./Winner";
 import LastWeekend from "./LastWeekend";
+import DriverCards from "./DriverCards";
 import dutchWinner from "../assets/dutch_winner.png";
 
 const Dashboard = () => {
@@ -156,6 +157,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <DriverCards />
     </div>
   );
 };
