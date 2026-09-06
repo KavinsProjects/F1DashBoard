@@ -18,6 +18,8 @@ I Used Jolpica F1 API.
 - Current Drivers [click](https://api.jolpi.ca/ergast/f1/current)
 
 
+<img width="1024" height="576" alt="simply lonely" src="https://github.com/user-attachments/assets/8fe72fb8-2250-4f33-8360-fd53f844b6a3" />
+
 
 
 
