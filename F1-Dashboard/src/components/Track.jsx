@@ -1,25 +1,33 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+
+const TRACK_IMAGE_BASE_URL = "https://kavinsprojects.github.io/F1_Track_API/track-img";
+const TRACK_IMAGE_BY_CIRCUIT_ID = {
+  albert_park: "Albert_Park_Circuit.png",
+  bahrain: "Bahrain_Circuit.png",
+  hungaroring: "Hungarain_Circuit.png",
+  miami: "Miami_Circuit.png",
+  monaco: "Circuit_de_Monaco.png",
+  zandvoort: "Dutch_Circuit.png",
+  suzuka: "Japan_Circuit.png",
+  shanghai: "chinese_Circuit.png",
+  spa: "spa.png",
+  monza: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmonzadetailed.webp",
+};
 
 const Track = ({ race, loading }) => {
   const circuitId = race?.Circuit?.circuitId;
   const circuitName = race?.Circuit?.circuitName || "Circuit Map";
-  const [imgUrl, setImgUrl] = useState(`https://kavinsprojects.github.io/F1_Track_API/track-img/spa.png`);
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    if (circuitId) {
-      setImgUrl(`https://kavinsprojects.github.io/F1_Track_API/track-img/${circuitId}.png`);
-      setHasError(false);
-    }
-  }, [circuitId]);
+  const [failedCircuitId, setFailedCircuitId] = useState(null);
+  const imageName = TRACK_IMAGE_BY_CIRCUIT_ID[circuitId];
+  const imgUrl = imageName
+    ? imageName.startsWith("http")
+      ? imageName
+      : `${TRACK_IMAGE_BASE_URL}/${imageName}`
+    : null;
+  const hasError = failedCircuitId === circuitId;
 
   const handleImageError = () => {
-    if (!hasError) {
-      setHasError(true);
-      // Fallback to Spa if specific track doesn't exist in the API repo
-      setImgUrl(`https://kavinsprojects.github.io/F1_Track_API/track-img/Dutch_Circuit.png`);
-      // UpComeing Race Week https://kavinsprojects.github.io/F1_Track_API/track-img/Dutch_Circuit.png
-    }
+    setFailedCircuitId(circuitId);
   };
 
   if (loading) {
@@ -63,17 +71,23 @@ const Track = ({ race, loading }) => {
           height: "420px",
         }}
       >
-        <img
-          src={imgUrl}
-          alt={circuitName}
-          onError={handleImageError}
-          style={{
-            maxWidth: "100%",
-            maxHeight: "100%",
-            objectFit: "contain",
-            transition: "all 0.3s ease",
-          }}
-        />
+        {imgUrl && !hasError ? (
+          <img
+            src={imgUrl}
+            alt={circuitName}
+            onError={handleImageError}
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+              transition: "all 0.3s ease",
+            }}
+          />
+        ) : (
+          <div style={{ color: "var(--f1-text-secondary)", fontSize: "13px", textAlign: "center" }}>
+            TRACK IMAGE UNAVAILABLE
+          </div>
+        )}
       </div>
 
       <div style={{ fontSize: "13px" }}>

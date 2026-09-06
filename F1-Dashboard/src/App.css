@@ -37,6 +37,26 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   font-size: 15px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -12px;
+  z-index: 0;
+  background-image: linear-gradient(rgba(15, 15, 20, 0.54), rgba(15, 15, 20, 0.54)), url("/F1DashBoard/bg.jpg"), url("/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(4px);
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+body > #root {
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -61,7 +81,7 @@ body {
 
 /* Minimalist F1 Card Styling */
 .f1-card {
-  background: var(--f1-card-bg);
+  background: rgba(21, 21, 31, 0.88);
   border: 1px solid var(--f1-border);
   border-radius: 8px;
   padding: 24px;
@@ -72,6 +92,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  backdrop-filter: blur(10px);
 }
 
 .f1-card:hover {

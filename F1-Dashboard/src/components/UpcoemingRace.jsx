@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const UpcomingRace = ({ race, loading }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -130,6 +130,37 @@ const UpcomingRace = ({ race, loading }) => {
         {/* Race Header details */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "8px" }}>
+
+        {race.Circuit?.circuitId === "monza" && (
+          <div
+            style={{
+              marginBottom: "15px",
+              border: "1px solid var(--f1-border)",
+              borderRadius: "6px",
+              overflow: "hidden",
+              background: "#0A0A0F",
+            }}
+          >
+            <img
+              src="https://media.formula1.com/image/upload/t_16by9North/c_fit,w_1584/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Italy/2293775105.webp"
+              alt="Monza race day at the 2026 Italian Grand Prix"
+              style={{ width: "100%", height: "130px", objectFit: "cover", display: "block" }}
+            />
+            <div style={{ padding: "10px" }}>
+              <div style={{ color: "white", fontSize: "12px", fontWeight: "700", marginBottom: "6px" }}>
+                MONZA RACE DAY
+              </div>
+              <p style={{ color: "var(--f1-text-secondary)", fontSize: "11px", lineHeight: "1.5" }}>
+                The Temple of Speed hosts the 2026 Italian Grand Prix. Monza is 5.793 km long,
+                the race runs for 53 laps, and the total distance is 306.72 km.
+              </p>
+              <p style={{ color: "var(--f1-text-secondary)", fontSize: "11px", lineHeight: "1.5", marginTop: "7px" }}>
+                Built in 1922 and a Formula 1 venue since 1950, Monza is Ferrari's home circuit.
+                The 2025 Italian GP winner was Max Verstappen.
+              </p>
+            </div>
+          </div>
+        )}
             <span
               style={{
                 background: "rgba(225, 6, 0, 0.1)",
